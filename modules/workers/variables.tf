@@ -21,8 +21,8 @@ variable "ssh_keys" {
 }
 
 variable "provision_ssh_key" {
-  default     = "~/.ssh/id_rsa"
-  description = "File path to SSH private key used to access the provisioned nodes. Ensure this key is listed in the manager and work ssh keys list"
+  default     = ""
+  description = "The SSH private key used to access the provisioned nodes. Ensure this key is listed in the manager and work ssh keys list"
 }
 
 variable "provision_user" {
