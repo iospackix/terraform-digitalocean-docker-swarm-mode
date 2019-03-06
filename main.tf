@@ -15,7 +15,7 @@ module "managers" {
   remote_api_key         = "${var.remote_api_key}"
   remote_api_certificate = "${var.remote_api_certificate}"
 
-  ssh_keys           = "${var.worker_ssh_keys}"
+  ssh_keys           = "${var.manager_ssh_keys}"
   provision_ssh_key  = "${var.provision_ssh_key}"
   provision_user     = "${var.provision_user}"
   connection_timeout = "${var.connection_timeout}"
