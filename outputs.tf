@@ -8,6 +8,11 @@ output "manager_ips_private" {
   description = "The manager nodes private ipv4 adresses"
 }
 
+output "manager_droplet_ids" {
+  value       = ["${module.managers.droplet_ids}"]
+  description = "The manger nodes droplet ids"
+}
+
 output "worker_ips" {
   value       = ["${module.workers.ipv4_addresses}"]
   description = "The worker nodes public ipv4 adresses"
@@ -16,6 +21,11 @@ output "worker_ips" {
 output "worker_ips_private" {
   value       = ["${module.workers.ipv4_addresses_private}"]
   description = "The worker nodes private ipv4 adresses"
+}
+
+output "worker_droplet_ids" {
+  value       = ["${module.workers.droplet_ids}"]
+  description = "The worker nodes droplet ids"
 }
 
 output "manager_token" {

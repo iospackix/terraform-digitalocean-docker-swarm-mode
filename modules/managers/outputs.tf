@@ -19,3 +19,13 @@ output "worker_token" {
   description = "The Docker Swarm worker join token"
   sensitive   = true
 }
+
+output "droplet_ids" {
+  value       = ["${digitalocean_droplet.manager.*.id}"]
+  description = "The droplet ids"
+}
+
+output "droplet_hostnames" {
+  value       = ["${digitalocean_droplet.manager.*.name}"]
+  description = "The droplet names"
+}
