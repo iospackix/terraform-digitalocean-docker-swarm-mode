@@ -18,4 +18,6 @@ if [ $UFW_INSTALLED -eq 0 ]; then
   sudo ufw allow 4789/udp
 fi
 
+echo "Starting Swarm"
+
 ${docker_cmd} swarm init --advertise-addr $MANAGER_PRIVATE_ADDR
