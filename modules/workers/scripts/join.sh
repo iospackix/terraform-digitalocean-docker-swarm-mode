@@ -16,6 +16,8 @@ if [ $UFW_INSTALLED -eq 0 ]; then
   sudo ufw allow 4789/udp
 fi
 
+echo "joining swarm with token: $1"
+
 # Join cluster
 ${docker_cmd} swarm join --token $1 \
   --availability ${availability} ${manager_private_ip}:2377
