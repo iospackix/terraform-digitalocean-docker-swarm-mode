@@ -112,7 +112,7 @@ resource "null_resource" "manager_api_access" {
 
 data "external" "swarm_tokens" {
   program    = ["bash", "${path.module}/scripts/get-swarm-join-tokens.sh"]
-  depends_on = ["null_resource.manager_api_access"]
+  depends_on = ["digitalocean_droplet.manager"]
 
   query = {
     host        = "${element(digitalocean_droplet.manager.*.ipv4_address, 0)}"
