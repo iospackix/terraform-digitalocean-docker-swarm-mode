@@ -24,7 +24,7 @@ resource "digitalocean_droplet" "node" {
   connection {
     type        = "ssh"
     user        = "${var.provision_user}"
-    private_key = "${var.provision_ssh_key}"
+    private_key = "${file("${var.provision_ssh_key}")}"
     timeout     = "${var.connection_timeout}"
   }
 

@@ -32,7 +32,7 @@ resource "digitalocean_droplet" "manager" {
   connection {
     type        = "ssh"
     user        = "${var.provision_user}"
-    private_key = "${var.provision_ssh_key}"
+    private_key = "${file("${var.provision_ssh_key}")}"
     timeout     = "${var.connection_timeout}"
   }
 
@@ -72,7 +72,7 @@ resource "null_resource" "manager_api_access" {
     host        = "${element(digitalocean_droplet.manager.*.ipv4_address, count.index)}"
     type        = "ssh"
     user        = "${var.provision_user}"
-    private_key = "${var.provision_ssh_key}"
+    private_key = "${file("${var.provision_ssh_key}")}"
     timeout     = "${var.connection_timeout}"
   }
 
@@ -117,7 +117,7 @@ data "external" "swarm_tokens" {
   query = {
     host        = "${element(digitalocean_droplet.manager.*.ipv4_address, 0)}"
     user        = "${var.provision_user}"
-    private_key = "${var.provision_ssh_key}"
+    private_key = "${file("${var.provision_ssh_key}")}"
   }
 }
 
@@ -133,7 +133,7 @@ resource "null_resource" "bootstrap" {
     host        = "${element(digitalocean_droplet.manager.*.ipv4_address, count.index)}"
     type        = "ssh"
     user        = "${var.provision_user}"
-    private_key = "${var.provision_ssh_key}"
+    private_key = "${file("${var.provision_ssh_key}")}"
     timeout     = "${var.connection_timeout}"
   }
 
