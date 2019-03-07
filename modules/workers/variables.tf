@@ -25,6 +25,12 @@ variable "provision_ssh_key" {
   description = "The SSH private key used to access the provisioned nodes. Ensure this key is listed in the manager and work ssh keys list"
 }
 
+variable "provision_ssh_key_content" {
+  default     = ""
+  description = "The SSH private key content used to access the provisioned nodes. Ensure this key is listed in the manager and work ssh keys list"
+}
+
+
 variable "provision_user" {
   default     = "root"
   description = "User used to log in to the droplets via ssh for issueing Docker commands"
