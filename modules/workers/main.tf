@@ -42,7 +42,7 @@ resource "digitalocean_droplet" "node" {
 
 	provisioner "remote-exec" {
     inline = [
-      "${var.docker_cmd} swarm join --token ${var.join_token} --availability ${var.availability} ${var.manager_private_ip}:2377"
+      "timeout 100 ${var.docker_cmd} swarm join --token ${var.join_token} --availability ${var.availability} ${var.manager_private_ip}:2377"
     ]
   }
 
