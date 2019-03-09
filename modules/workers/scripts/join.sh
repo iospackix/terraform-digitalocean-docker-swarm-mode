@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wait until Docker is running correctly
-while [ -z "$(${docker_cmd} info | grep CPUs)" ]; do
+while [ -z "$(sudo docker info | grep CPUs)" ]; do
   echo Waiting for Docker to start...
   sleep 2
 done

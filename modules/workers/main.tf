@@ -1,13 +1,3 @@
-data "template_file" "join_cluster_as_worker" {
-  template = "${file("${path.module}/scripts/join.sh")}"
-
-  vars {
-    docker_cmd         = "${var.docker_cmd}"
-    availability       = "${var.availability}"
-    manager_private_ip = "${var.manager_private_ip}"
-  }
-}
-
 resource "digitalocean_droplet" "node" {
   ssh_keys           = ["${var.ssh_keys}"]
   image              = "${var.image}"
@@ -29,7 +19,7 @@ resource "digitalocean_droplet" "node" {
   }
 
   provisioner "file" {
-    content     = "${data.template_file.join_cluster_as_worker.rendered}"
+    source      = "${path.module}/scripts/join.sh"
     destination = "/tmp/join_cluster_as_worker.sh"
   }
 
