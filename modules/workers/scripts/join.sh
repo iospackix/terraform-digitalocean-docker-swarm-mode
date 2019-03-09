@@ -19,5 +19,5 @@ fi
 echo "joining swarm with token: $1"
 
 # Join cluster
-${docker_cmd} swarm join --token $1 \
-  --availability ${availability} ${manager_private_ip}:2377
+# ${docker_cmd} swarm join --token $1 \
+#   --availability ${availability} ${manager_private_ip}:2377

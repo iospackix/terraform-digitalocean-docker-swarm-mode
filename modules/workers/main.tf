@@ -36,7 +36,13 @@ resource "digitalocean_droplet" "node" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/join_cluster_as_worker.sh",
-      "/tmp/join_cluster_as_worker.sh ${var.join_token}",
+      "timeout 100 /tmp/join_cluster_as_worker.sh",
+    ]
+  }
+
+	provisioner "remote-exec" {
+    inline = [
+      "${var.docker_cmd} swarm join --token ${var.join_token} --availability ${var.availability} ${var.manager_private_ip}:2377"
     ]
   }
 
